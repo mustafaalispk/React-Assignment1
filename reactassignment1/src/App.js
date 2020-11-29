@@ -1,12 +1,19 @@
 import React from 'react';
-import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import HomeView from './views/HomeView'
+import About from './views/About'
+import Contact from './views/Contact'
 
-function App() {
+const App = () => {
     return (
-        <div>
-            <h1>ReactAssignment1</h1>
-        </div>
-    );
+        <>
+            <Switch>
+                <Route exact path="/" component={HomeView} />
+                <Route exact path="/about" component={About} />
+                <Route exact path="/contact" component={Contact} />
+            </Switch>
+        </>
+    )
 }
 
 export default App;
