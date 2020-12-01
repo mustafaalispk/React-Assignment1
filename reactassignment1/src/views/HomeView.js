@@ -2,7 +2,7 @@ import React from 'react';
 
 const HomeView = () => {
     return (
-        <div>
+        <div className="contact_form">
             <h1>This is the Homeview page!</h1>
         </div>
     )

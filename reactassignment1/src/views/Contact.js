@@ -1,6 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Contact = () => {
-    return <h1>Hello, I am in a Contact page!</h1>
+    const [name, setName] = useState("");
+    const [formName, setFullName] = useState();
+    const inputEvent = (event) => {
+        setName(event.target.value);
+    };
+    const onSubmit = () => {
+        setFullName(name);
+    }
+    return (
+        <>
+            <div className="contact_form">
+                <h1>{formName}</h1>
+                <input type="text" placeholder="Enter your name"
+                    onChange={inputEvent}
+                    value={name} />
+                <button onClick={onSubmit}> Click Me</button>
+            </div>
+        </>
+
+    )
 }
 export default Contact;
