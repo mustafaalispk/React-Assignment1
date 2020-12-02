@@ -1,24 +1,33 @@
 import React, { useState } from 'react'
 
 const Contact = () => {
-    const [name, setName] = useState("");
-    const [formName, setFullName] = useState();
-    const inputEvent = (event) => {
-        console.log(event.target.value);
-        setName(event.target.value);
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [fullName, setFullName] = useState();
+    const [newLastName, setNewLastName] = useState();
+
+    const inputEventForFirstName = (event) => {
+        setFirstName(event.target.value);
     };
+    const inputEventForLastName = (event) => {
+        setLastName(event.target.value);
+    }
     const onSubmits = (event) => {
         event.preventDefault();
-        setFullName(name);
+        setFullName(firstName);
+        setNewLastName(lastName);
     }
     return (
         <>
             <form onSubmit={onSubmits}>
                 <div className="contact_form">
-                    <h1>{formName}</h1>
-                    <input type="text" placeholder="Enter your name and click on Click Me button"
-                        onChange={inputEvent}
-                        value={name} />
+                    <h1>{fullName} {newLastName}</h1>
+                    <input type="text" placeholder="Enter your first name"
+                        onChange={inputEventForFirstName}
+                        value={firstName} />
+                    <input type="text" placeholder="Enter your last name"
+                        onChange={inputEventForLastName}
+                        value={lastName} />
                     <button type="submit"> Click Me</button>
                 </div>
             </form>
