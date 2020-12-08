@@ -10,10 +10,12 @@ const HomeView = () => {
         const getData = async () => {
             setLoading(true)
             try {
+                alert('Pokemon value is being rendered');
                 const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${num}`)
                 console.log(res.data);
                 setName(res.data.name);
-                setMoves(res.data.moves[0].move.name);
+                //setMoves(res.data.moves[0].move.name);
+                setMoves(res.data.moves.length);
             }
             catch (error) {
                 console.log(error)
@@ -21,12 +23,16 @@ const HomeView = () => {
             }
         }
         getData();
-    });
+        return () => {
+            alert('Randering has been removed');
+        }
+    }
+        , [num]);
     return (
         <>
-            <h1>you choose <span style={{ color: 'red' }}>{num} value </span></h1>
-            <h1>you choose <span style={{ color: 'red' }}> {name} </span></h1>
-            <h1>you choose <span style={{ color: 'red' }}> {moves} moves </span></h1>
+            <h1>You choose <span style={{ color: 'red' }}>{num} value </span></h1>
+            <h1>You choose <span style={{ color: 'red' }}> {name} </span></h1>
+            <h1>You choose <span style={{ color: 'red' }}> {moves} moves </span></h1>
             <select value={num} onChange={(event) => {
                 setNum(event.target.value);
             }}>
